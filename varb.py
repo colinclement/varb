@@ -1,9 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-import autograd.numpy as np
-from autograd import grad
-
 N = 60
 x = np.linspace(-1.25, 1.25, num=N)
 poly = np.array([1., -0.5, -1., 0.5]) #m, b
@@ -125,9 +122,9 @@ def plot_fit_whisker(lamb, x, d, samples=1000, true_p = poly):
     plt.plot(x, f, label='best fit')
 
     f = np.polyval(np.polyfit(x,d, len(m)-1), x)
-    plt.plot(x, f, label='polyfit')
+    plt.plot(x, f, '-.', label='polyfit')
     if true_p is not None:
-        plt.plot(x, np.polyval(true_p, x), label='True')
+        plt.plot(x, np.polyval(true_p, x), '--', label='True')
     plt.legend(loc='best')
     return f
 
